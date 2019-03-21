@@ -1,0 +1,29 @@
+{
+  "name": "solid-sierpinski-triangle-demo",
+  "version": "0.0.1",
+  "description": "Solid implementation of Sierpinski Triangle",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "keywords": [
+    "solid",
+    "javascript",
+    "framework"
+  ],
+  "author": "Ryan Carniato",
+  "license": "MIT",
+  "homepage": "https://github.com/ryansolid/solid-uibench",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ryansolid/solid-uibench.git"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "babel-plugin-jsx-dom-expressions": "~0.5.0",
+    "rollup": "^1.6.0",
+    "rollup-plugin-babel": "4.3.2",
+    "rollup-plugin-node-resolve": "^4.0.1",
+    "rollup-plugin-terser": "^4.0.4",
+    "solid-js": "~0.4.2"
+  }
+}
