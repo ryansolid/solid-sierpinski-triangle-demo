@@ -9,7 +9,11 @@ I strongly suggest opening the Chrome debugger performance tab and throttling th
 ## Comparison
 
 [React 15](https://claudiopro.github.io/react-fiber-vs-stack-demo/stack.html)
+
 [React Fiber](https://claudiopro.github.io/react-fiber-vs-stack-demo/fiber.html)
+
 [Stencil](https://stencil-fiber-demo.firebaseapp.com/perf.html)
+
 [Aurelia](http://aurelia-thousand-nodes.bigopon.surge.sh/)
+
 [Radi](https://radi.js.org/perf-test.html)
