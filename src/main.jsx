@@ -1,5 +1,4 @@
 import { createRoot, createSignal, onCleanup, createMemo, createEffect } from 'solid-js';
-import { r } from 'solid-js/dom';
 
 const TARGET = 25;
 
