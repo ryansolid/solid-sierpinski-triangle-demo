@@ -14,7 +14,7 @@ export default {
 	plugins: [
 		babel({
       exclude: 'node_modules/**',
-      plugins: [["jsx-dom-expressions", {moduleName: 'solid-js/dom'}]]
+      presets: ['solid']
     }),
     resolve({ extensions: ['.js', '.jsx'] }),
 		production && terser()
