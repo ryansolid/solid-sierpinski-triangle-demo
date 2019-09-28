@@ -1,4 +1,5 @@
-import { createRoot, createSignal, onCleanup, createMemo, createEffect } from 'solid-js';
+import { createSignal, onCleanup, createMemo, createEffect } from 'solid-js';
+import { render } from 'solid-js/dom';
 
 const TARGET = 25;
 
@@ -91,4 +92,4 @@ const Dot = ({x, y, s, text}) => {
   )}</div>
 }
 
-createRoot(() => document.body.appendChild(<TriangleDemo />));
+render(TriangleDemo, document.body);
