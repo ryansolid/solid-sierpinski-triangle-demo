@@ -41,14 +41,14 @@ const TriangleDemo = () => {
 
   onCleanup(() => {clearInterval(t), cancelAnimationFrame(f)});
 
-  return <div class='container' style={({transform: 'scaleX(' + (scale() / 2.1) + ') scaleY(0.7) translateZ(0.1px)'})}>
+  return <div class='container' style={{transform: 'scaleX(' + scale() / 2.1 + ') scaleY(0.7) translateZ(0.1px)'}}>
     <Triangle x={0} y={0} s={1000} seconds={seconds} />
   </div>
 }
 
 const Triangle = ({ x, y, s, seconds }) => {
   if (s <= TARGET) {
-    return <Dot x={x - (TARGET / 2)} y={y - (TARGET / 2)} s={TARGET} text={seconds} />
+    return <Dot x={x - TARGET / 2} y={y - TARGET / 2} s={TARGET} text={seconds} />
   }
   s = s / 2;
 
@@ -63,9 +63,9 @@ const Triangle = ({ x, y, s, seconds }) => {
   // }
 
   return <>
-    <Triangle x={x} y={y - (s / 2)} s={s} seconds={seconds} />
-    <Triangle x={x - s} y={y + (s / 2)} s={s} seconds={seconds} />
-    <Triangle x={x + s} y={y + (s / 2)} s={s} seconds={seconds} />
+    <Triangle x={x} y={y - s / 2} s={s} seconds={seconds} />
+    <Triangle x={x - s} y={y + s / 2} s={s} seconds={seconds} />
+    <Triangle x={x + s} y={y + s / 2} s={s} seconds={seconds} />
   </>
 }
 
@@ -76,20 +76,19 @@ const Dot = ({x, y, s, text}) => {
 
   return <div
     class='dot'
-    style={({
+    style={{
       width: s + 'px',
       height: s + 'px',
       left: x + 'px',
       top: y + 'px',
-      borderRadius: (s / 2) + 'px',
+      borderRadius: s / 2 + 'px',
       lineHeight: s + 'px',
       background: hover() ? '#ff0' : '#61dafb'
-    })}
+    }}
     onMouseEnter={onEnter}
     onMouseLeave={onExit}
-  >{(
-    hover() ? '**' + text() + '**' : text()
-  )}</div>
+    textContent={hover() ? '**' + text() + '**' : text()}
+  />
 }
 
 render(TriangleDemo, document.body);
