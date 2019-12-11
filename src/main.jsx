@@ -3,21 +3,56 @@ import { render } from 'solid-js/dom';
 
 const TARGET = 25;
 
+// const dePrioritize = signal => {
+//   let i, t;
+//   const [delayed, setDelayed] = createSignal(signal()),
+//     box = { current: null },
+//     method = () => {
+//       cancelIdleCallback(i);
+//       clearTimeout(t);
+//       t = null;
+//       setDelayed(box.current);
+//     };
+//   createEffect(() => {
+//     box.current = signal();
+//     cancelIdleCallback(i);
+//     if (!t) t = setTimeout(method, ~~(Math.random() * 4 + 1) * 100);
+//     i = requestIdleCallback(method);
+//   });
+//   return delayed;
+// }
+
+let scheduled = false,
+  index = 0,
+  queue = [];
+const runner = c => {
+  let count = 0;
+  while ((c.timeRemaining() || count < 1) && index < queue.length) {
+    const t = queue[index];
+    t && t();
+    queue[index++] = null
+    count++;
+  }
+  if (index >= queue.length) scheduled = false;
+  else requestIdleCallback(runner, { timeout: 50 });
+}
+
+const schedule = fn => {
+  queue.push(fn);
+  if (!scheduled) {
+    requestIdleCallback(runner, { timeout: 50 })
+    scheduled = true;
+  }
+  return queue.length - 1;
+}
+
 const dePrioritize = signal => {
-  let i, t;
-  const [delayed, setDelayed] = createSignal(signal()),
-    box = { current: null },
-    method = () => {
-      cancelIdleCallback(i);
-      clearTimeout(t);
-      t = null;
-      setDelayed(box.current);
-    };
+  let i;
+  const [delayed, setDelayed] = createSignal(signal());
   createEffect(() => {
-    box.current = signal();
-    cancelIdleCallback(i);
-    if (!t) t = setTimeout(method, ~~(Math.random() * 4 + 1) * 100);
-    i = requestIdleCallback(method);
+    signal();
+    if (!i || !queue[i])
+      i = schedule(() => setDelayed(signal()));
   });
   return delayed;
 }
@@ -52,7 +87,7 @@ const Triangle = ({ x, y, s, seconds }) => {
   }
   s = s / 2;
 
-  if (s === 125) seconds = dePrioritize(seconds);
+  if (s === 62.5) seconds = dePrioritize(seconds);
 
   // var slowDown = true;
   // if (slowDown) {
