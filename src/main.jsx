@@ -2,7 +2,6 @@ import {
   createSignal,
   onCleanup,
   createMemo,
-  createEffect,
   createDeferred
 } from "solid-js";
 import { render } from "solid-js/dom";
