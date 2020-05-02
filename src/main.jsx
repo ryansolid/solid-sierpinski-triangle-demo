@@ -1,9 +1,4 @@
-import {
-  createSignal,
-  onCleanup,
-  createMemo,
-  createDeferred
-} from "solid-js";
+import { createSignal, onCleanup, createMemo, createDeferred } from "solid-js";
 import { render } from "solid-js/dom";
 
 const TARGET = 25;
@@ -43,9 +38,7 @@ const TriangleDemo = () => {
 
 const Triangle = ({ x, y, s, seconds }) => {
   if (s <= TARGET) {
-    return (
-      <Dot x={x - TARGET / 2} y={y - TARGET / 2} s={TARGET} text={seconds} />
-    );
+    return <Dot x={x - TARGET / 2} y={y - TARGET / 2} s={TARGET} text={seconds} />;
   }
   s = s / 2;
 
@@ -81,8 +74,8 @@ const Dot = ({ x, y, s, text }) => {
         height: s + "px",
         left: x + "px",
         top: y + "px",
-        borderRadius: s / 2 + "px",
-        lineHeight: s + "px",
+        "border-radius": s / 2 + "px",
+        "line-height": s + "px",
         background: hover() ? "#ff0" : "#61dafb"
       }}
       onMouseEnter={onEnter}
