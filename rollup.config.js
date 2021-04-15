@@ -14,6 +14,7 @@ export default {
 	plugins: [
 		babel({
       exclude: 'node_modules/**',
+			babelHelpers: "bundled",
       presets: ['solid']
     }),
     resolve({ extensions: ['.js', '.jsx'] }),

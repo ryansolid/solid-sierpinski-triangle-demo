@@ -1,5 +1,5 @@
 import { createSignal, onCleanup, createMemo, createDeferred } from "solid-js";
-import { render } from "solid-js/dom";
+import { render } from "solid-js/web";
 
 const TARGET = 25;
 
