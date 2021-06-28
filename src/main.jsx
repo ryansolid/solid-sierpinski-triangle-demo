@@ -44,13 +44,12 @@ const Triangle = ({ x, y, s, seconds }) => {
 
   if (s === 62.5) seconds = createDeferred(seconds);
 
-  // var slowDown = true;
-  // if (slowDown) {
+  // const slow = createDeferred(() => {
   //   var e = performance.now() + 0.8;
-  //   while (performance.now() < e) {
-  //     // Artificially long execution time.
-  //   }
-  // }
+  //   // Artificially long execution time.
+  //   while (performance.now() < e) {}
+  //   return seconds()
+  // })
 
   return (
     <>
