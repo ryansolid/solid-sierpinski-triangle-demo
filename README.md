@@ -11,9 +11,9 @@ This demo is often misunderstood. Even I didn't really get it 100% at first. It'
 
 [React Fiber](https://claudiopro.github.io/react-fiber-vs-stack-demo/fiber.html)
 
-## Examples without Slowdown
-
 [Stencil](https://stencil-fiber-demo.firebaseapp.com/perf.html)
+
+## Examples without Slowdown
 
 [Glimmer](https://mupkoo.github.io/react-fiber-demo-with-glimmerjs/)
 
