@@ -4,13 +4,14 @@ Popularized by React Fiber demo.
 
 Run it [here](https://ryansolid.github.io/solid-sierpinski-triangle-demo/)
 
-I strongly suggest opening the Chrome debugger performance tab and throttling the CPU when running these demos. It's not about the FPS since on most computers these days can run at 60fps. It's about how they degrade under low CPU resources. Look for implementations that don't update numbers, ones that start stepping on increments,and ones that animation swings. It comes down to aethestics as much as performance, but I think you will find Solid degrades the most gracefully given its natural setup for asynchronous rendering. Stencil deserves honorable mention but most libraries don't handle this well.
-
+This demo is often misunderstood. Even I didn't really get it 100% at first. It's not about the FPS since on most computers these days can run at 60fps. It's about how they degrade under low CPU resources. I previously suggested throttling the CPU in chrome dev tools, and that's still a good exercise but this isn't just about external aspects. React purposefully sticks a slowdown in the component to simulate an expensive computation in every single node. I've done the same with Solid now.
 ## Comparison
 
 [React 15](https://claudiopro.github.io/react-fiber-vs-stack-demo/stack.html)
 
 [React Fiber](https://claudiopro.github.io/react-fiber-vs-stack-demo/fiber.html)
+
+# Examples without Slowdown
 
 [Stencil](https://stencil-fiber-demo.firebaseapp.com/perf.html)
 

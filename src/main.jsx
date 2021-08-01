@@ -42,20 +42,18 @@ const Triangle = ({ x, y, s, seconds }) => {
   }
   s = s / 2;
 
-  if (s === 62.5) seconds = createDeferred(seconds);
-
-  // const slow = createDeferred(() => {
-  //   var e = performance.now() + 0.8;
-  //   // Artificially long execution time.
-  //   while (performance.now() < e) {}
-  //   return seconds()
-  // })
+  const slow = createDeferred(() => {
+    var e = performance.now() + 0.8;
+    // Artificially long execution time.
+    while (performance.now() < e) {}
+    return seconds()
+  })
 
   return (
     <>
-      <Triangle x={x} y={y - s / 2} s={s} seconds={seconds} />
-      <Triangle x={x - s} y={y + s / 2} s={s} seconds={seconds} />
-      <Triangle x={x + s} y={y + s / 2} s={s} seconds={seconds} />
+      <Triangle x={x} y={y - s / 2} s={s} seconds={slow} />
+      <Triangle x={x - s} y={y + s / 2} s={s} seconds={slow} />
+      <Triangle x={x + s} y={y + s / 2} s={s} seconds={slow} />
     </>
   );
 };
