@@ -1,6 +1,7 @@
-import { createSignal, onCleanup, createMemo, createDeferred } from "solid-js";
+import { createSignal, onCleanup, createMemo, startTransition, enableScheduling } from "solid-js";
 import { render } from "solid-js/web";
 
+enableScheduling();
 const TARGET = 25;
 
 const TriangleDemo = () => {
@@ -11,7 +12,7 @@ const TriangleDemo = () => {
       return 1 + (e > 5 ? 10 - e : e) / 10;
     }),
     start = Date.now(),
-    t = setInterval(() => setSeconds((seconds() % 10) + 1), 1000);
+    t = setInterval(() => startTransition(() => setSeconds((seconds() % 10) + 1)), 1000);
 
   let f;
   const update = () => {
@@ -42,12 +43,12 @@ const Triangle = ({ x, y, s, seconds }) => {
   }
   s = s / 2;
 
-  const slow = createDeferred(() => {
+  const slow = createMemo(() => {
     var e = performance.now() + 0.8;
     // Artificially long execution time.
     while (performance.now() < e) {}
-    return seconds()
-  })
+    return seconds();
+  });
 
   return (
     <>
